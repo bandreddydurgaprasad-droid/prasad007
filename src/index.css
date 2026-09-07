@@ -1,0 +1,40 @@
+@import "tailwindcss";
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    background-color: #050505;
+    color: #E0E0E0;
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  }
+}
+
+/* Custom TV Scrollbar - Geometric Balance */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #080808;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #262626;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #f97316;
+}
+
+/* Geometric Focus Glow for Android TV 10-foot UI */
+.tv-focus-active {
+  border: 4px solid #f97316 !important;
+  box-shadow: 0 0 0 4px rgba(249, 115, 22, 0.4), 0 25px 50px -12px rgba(249, 115, 22, 0.25);
+  transform: scale(1.02);
+  z-index: 20;
+}
+

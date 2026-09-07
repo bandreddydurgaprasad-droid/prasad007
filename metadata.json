@@ -1,0 +1,6 @@
+{
+  "name": "Telugu Ultra TV",
+  "description": "Android TV streaming application for Telugu Live TV channels and movies with full remote control navigation, IPTV stream playback, and custom notepad configuration.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
