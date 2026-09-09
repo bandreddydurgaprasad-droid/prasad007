@@ -53,6 +53,8 @@ export interface Movie {
 
 export type ActiveScreen = 'channels' | 'movies' | 'favorites' | 'notepad' | 'settings' | 'guide' | 'testing';
 
+export type ChannelSortOption = 'Default' | 'Alphabetical' | 'Number-based';
+
 export interface RemoteKeyFeedback {
   key: string;
   timestamp: number;

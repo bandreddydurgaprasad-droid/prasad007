@@ -1,5 +1,5 @@
 import React from 'react';
-import { Maximize2, X, ChevronLeft, ChevronRight, Star, ExternalLink, Radio } from 'lucide-react';
+import { Maximize2, X, ChevronLeft, ChevronRight, Star, Radio } from 'lucide-react';
 import { Channel, Movie } from '../types';
 import { soundEffects } from '../utils/sound';
 import { generateLogoUrl } from '../data/defaultChannels';
@@ -163,18 +163,6 @@ export const MiniPlayer: React.FC<MiniPlayerProps> = ({
             </button>
           )}
         </div>
-
-        {isChannel && channel && (channel.officialWebsite || channel.livePortalUrl) && (
-          <a
-            href={channel.officialWebsite || channel.livePortalUrl}
-            target="_blank"
-            rel="noreferrer"
-            className="flex items-center gap-1 text-[10px] font-semibold text-orange-400 hover:underline"
-          >
-            <span>Live TV Portal</span>
-            <ExternalLink className="w-3 h-3" />
-          </a>
-        )}
       </div>
     </div>
   );

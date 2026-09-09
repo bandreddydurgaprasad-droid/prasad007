@@ -4,7 +4,7 @@
  */
 
 import React, { useState, useEffect, useMemo, useCallback } from 'react';
-import { Channel, Movie, ActiveScreen, ChannelCategory } from './types';
+import { Channel, Movie, ActiveScreen, ChannelCategory, ChannelSortOption } from './types';
 import { RAW_NOTEPAD_DEFAULT, parseNotepadToChannels, refreshChannelLogos } from './data/defaultChannels';
 import { DEFAULT_MOVIES } from './data/defaultMovies';
 import { TVNavbar } from './components/TVNavbar';
@@ -27,15 +27,28 @@ const STORAGE_KEY_CHANNELS = 'telugu_tv_channels_v6';
 const STORAGE_KEY_MOVIES = 'telugu_tv_movies_v2';
 const STORAGE_KEY_SOUND = 'telugu_tv_sound_v1';
 const STORAGE_KEY_DENSITY = 'telugu_tv_density_v1';
+const STORAGE_KEY_SORT = 'telugu_tv_channel_sort';
 const STORAGE_KEY_RECENT = 'telugu_tv_recent_v2';
 
 export default function App() {
   // State: Notepad & Channels
   const [notepadText, setNotepadText] = useState<string>(() => {
     const saved = localStorage.getItem(STORAGE_KEY_NOTEPAD);
+    const hasDeprecatedYupp = saved && (
+      saved.includes('yupptv.com/channels/vissa-tv') ||
+      saved.includes('yupptv.com/channels/99-tv') ||
+      saved.includes('yupptv.com/channels/hmtv') ||
+      saved.includes('yupptv.com/channels/t-news') ||
+      saved.includes('yupptv.com/channels/inews') ||
+      saved.includes('yupptv.com/channels/express-tv') ||
+      saved.includes('yupptv.com/channels/pmc') ||
+      saved.includes('yupptv.com/channels/studio-one') ||
+      saved.includes('yupptv.com/channels/tana')
+    );
     if (
       !saved ||
       saved.includes('pishow.tv') ||
+      hasDeprecatedYupp ||
       !saved.includes('d3qs3d2rkhfqrt') ||
       !saved.includes('BHAKTHI') ||
       !saved.includes('HINDHUDHARMAM') ||
@@ -49,7 +62,9 @@ export default function App() {
       !saved.includes('SITI') ||
       !saved.includes('HATHWAY') ||
       !saved.includes('LOCAL TALKIES') ||
-      !saved.includes('CLASSIC MOVIES')
+      !saved.includes('CLASSIC MOVIES') ||
+      !saved.includes('GEMINI MUSIC') ||
+      !saved.includes('SUN MUSIC')
     ) {
       localStorage.setItem(STORAGE_KEY_NOTEPAD, RAW_NOTEPAD_DEFAULT);
       return RAW_NOTEPAD_DEFAULT;
@@ -77,6 +92,8 @@ export default function App() {
           const hasHathway = parsed.some(c => c.name.toLowerCase().includes('hathway'));
           const hasLocalTalkies = parsed.some(c => c.name.toLowerCase().includes('talkies') || c.name.toLowerCase().includes('takies'));
           const hasClassicMovies = parsed.some(c => c.name.toLowerCase().includes('classic'));
+          const hasGeminiMusic = parsed.some(c => c.name.toLowerCase().includes('gemini music') || c.name.toLowerCase().includes('gemini'));
+          const hasSunMusic = parsed.some(c => c.name.toLowerCase().includes('sun music'));
 
           if (
             !hasBrokenPishow &&
@@ -92,9 +109,13 @@ export default function App() {
             hasSiti &&
             hasHathway &&
             hasLocalTalkies &&
-            hasClassicMovies
+            hasClassicMovies &&
+            hasGeminiMusic &&
+            hasSunMusic
           ) {
-            return refreshChannelLogos(parsed);
+            const upgraded = refreshChannelLogos(parsed);
+            localStorage.setItem(STORAGE_KEY_CHANNELS, JSON.stringify(upgraded));
+            return upgraded;
           }
         }
       } catch {
@@ -133,9 +154,26 @@ export default function App() {
     return (saved as GridDensity) || 'fit';
   });
 
+  const [channelSort, setChannelSort] = useState<ChannelSortOption>(() => {
+    try {
+      const saved = localStorage.getItem(STORAGE_KEY_SORT);
+      if (saved === 'Default' || saved === 'Alphabetical' || saved === 'Number-based') {
+        return saved as ChannelSortOption;
+      }
+    } catch {}
+    return 'Default';
+  });
+
   const handleSetGridDensity = (density: GridDensity) => {
     setGridDensity(density);
     localStorage.setItem(STORAGE_KEY_DENSITY, density);
+  };
+
+  const handleSetChannelSort = (sort: ChannelSortOption) => {
+    setChannelSort(sort);
+    try {
+      localStorage.setItem(STORAGE_KEY_SORT, sort);
+    } catch {}
   };
 
   // Player State
@@ -196,9 +234,9 @@ export default function App() {
     localStorage.removeItem(STORAGE_KEY_MOVIES);
   };
 
-  // Filtered Channels
+  // Filtered & Sorted Channels
   const filteredChannels = useMemo(() => {
-    return channels.filter((ch) => {
+    const list = channels.filter((ch) => {
       if (ch.isHidden) return false;
       // Category filter
       if (selectedCategory === 'Favorites') {
@@ -217,7 +255,17 @@ export default function App() {
       }
       return true;
     });
-  }, [channels, selectedCategory, searchQuery]);
+
+    if (channelSort === 'Alphabetical') {
+      return [...list].sort((a, b) =>
+        a.name.localeCompare(b.name, undefined, { sensitivity: 'base', numeric: true })
+      );
+    }
+    if (channelSort === 'Number-based') {
+      return [...list].sort((a, b) => a.number - b.number);
+    }
+    return list;
+  }, [channels, selectedCategory, searchQuery, channelSort]);
 
   // Favorites Count
   const favoritesCount = useMemo(() => {
@@ -624,6 +672,8 @@ export default function App() {
                 focusedZone="channels"
                 density={gridDensity}
                 onChangeDensity={handleSetGridDensity}
+                sortBy={channelSort}
+                onChangeSort={handleSetChannelSort}
               />
             </div>
           </div>

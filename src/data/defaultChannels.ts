@@ -11,10 +11,10 @@ ABN ANDHRA JYOTHI:https://mumbai-edge.smartplaytv.in/ABNAJ/index.m3u8
 ZEE TELUGU NEWS:https://dknttpxmr0dwf.cloudfront.net/index_57.m3u8
 SWATANTRA TV:https://mumbai-edge.smartplaytv.in/SwatantraTV/index.m3u8
 BRK NEWS:https://mumbai-edge.smartplaytv.in/BRKNEWS/index.m3u8
-99TV:https://www.yupptv.com/channels/99-tv/live
-HMTV:https://www.yupptv.com/channels/hmtv/live
-T NEWS:https://www.yupptv.com/channels/t-news/live
-I_NEWS:https://www.yupptv.com/channels/inews/live
+99TV:https://www.youtube.com/watch?v=4AzR_uMuZfw
+HMTV:https://mumbai-edge.smartplaytv.in/HMTV/index.m3u8
+T NEWS:https://mumbai-edge.smartplaytv.in/TNews/index.m3u8
+I_NEWS:https://mumt03.tangotv.in/Dsly5z3HINEWS/index.m3u8
 
 CVR NEWS:https://www.youtube.com/watch?v=SChm4DyivOU
 CVR HEALTH:https://www.youtube.com/watch?v=GgQQEGY3Vp8
@@ -27,9 +27,9 @@ MAHAA MAX:https://mumt03.tangotv.in/Dsly5z3HMAHAAMAX/index.m3u8
 TOLLY TV:https://streams2.sofast.tv/v1/master/611d79b11b77e2f571934fd80ca1413453772ac7/13b5735d-52c3-4be0-853d-e0ec0127e708/manifest.m3u8
 STUDIO YUVA:https://mumt01.tangotv.in/O5aw8Zn3STUDIOYUVA/index.m3u8
 VANITHA TV:https://mumt01.tangotv.in/O5aw8Zn3VANITHA/index.m3u8
-EXPRESS TV:https://www.yupptv.com/channels/express-tv/live
+EXPRESS TV:https://www.youtube.com/watch?v=yVn-GtS2gqQ
 NAAPTOL TELUGU:https://www.youtube.com/watch?v=F3G3YxW5g5A
-VISSA TV:https://www.yupptv.com/channels/vissa-tv/live
+VISSA TV:https://mumt07.tangotv.in/zHjX9OFlVISSATV/index.m3u8
 AP PRIME TV:https://mumt01.tangotv.in/O5aw8Zn3APPRIME/index.m3u8
 
 MANA TV AP:https://www.youtube.com/watch?v=fFsBdBE6UJg
@@ -47,7 +47,7 @@ HINDHUDHARMAM TV:https://www.youtube.com/watch?v=bj3m27J9bxI
 SVBC TTD:https://player.mslivestream.net/telugu/5d076e5c3d34cb8bb08e54a4bb7e223e.sdp/playlist.m3u8
 SUBHAVAARTHA:https://2mk9qae4rwyb-hls-live.wmncdn.net/shubhavartha/live.stream/playlist.m3u8
 AASTHA TELUGU:https://aasthaott.akamaized.net/110923/smil:aasthatelugu.smil/playlist.m3u8
-PMC TV:https://www.yupptv.com/channels/pmc/live
+PMC TV:https://mumbai-edge.smartplaytv.in/PMC/index.m3u8
 YUPP VEDA:https://www.yupptv.com/channels/yupptv-veda/live
 
 SITI CINEMA:https://streams2.sofast.tv/v1/master/611d79b11b77e2f571934fd80ca1413453772ac7/siti-movies/manifest.m3u8
@@ -57,12 +57,14 @@ CLASSIC MOVIES:https://www.youtube.com/watch?v=132Xv_w_0Zg
 TELUGU ONE:https://teluguone-yupptv.vgcdn.net/v1/019be9e3f04d1ea55784338b5c3e89/019be9e4474415fc60e93459e1e808/teluguone_2500k.m3u8
 ETV TELUGU:https://bx-tv.com/watch/etv-telugu-b63695
 MANGO TV:https://bx-tv.com/watch/mango-mobile-tv-71b04e
-STUDIO ONE PLUS:https://www.yupptv.com/channels/studio-one-plus/live
-TANA TV:https://www.yupptv.com/channels/tana-prapancha-sahitya-vedika/live
+STUDIO ONE PLUS:https://mumt04.tangotv.in/m18aqlK4STUDIOONEPLUS/index.m3u8
+TANA TV:https://www.youtube.com/watch?v=EEVACQQms3M
 IDREAM MOVIES:https://www.youtube.com/watch?v=35Uu61pE7aE
 SHALIMAR CINEMA:https://www.youtube.com/watch?v=8kY2p8W42u0
 
 ADITYA MUSIC:https://www.youtube.com/live/s4zM_iSE6J0?si=hKIA8IzIkHBBWADM
+GEMINI MUSIC:https://www.youtube.com/live/s4zM_iSE6J0?si=hKIA8IzIkHBBWADM
+SUN MUSIC:https://www.youtube.com/watch?v=5rG4n6yWj4g
 RAJ MUSIC:https://bx-tv.com/watch/raj-musix-telugu-41548b
 ETV JOSH:https://www.youtube.com/live/LSzQR-64gzg?si=lUpvs6h4tBHNEsgA
 SARIGAMA:https://www.youtube.com/live/LukX1uZ_u_k?si=6d4kjkttmnou2NGl
@@ -361,7 +363,7 @@ const CHANNEL_METADATA: Record<string, ChannelMetaInfo> = {
     logoColor: '#c2410c',
     label: 'Hindu Dharmam TV',
     logo: 'https://dtil.tmsimg.com/assets/s143131_ld_h15_aa.png?lock=720x540',
-    officialWebsite: 'https://www.yupptv.com/channels/hindu-dharmam/live',
+    officialWebsite: 'https://www.youtube.com/watch?v=bj3m27J9bxI',
   },
   'hindu dharmam tv': {
     category: 'Devotional',
@@ -369,7 +371,7 @@ const CHANNEL_METADATA: Record<string, ChannelMetaInfo> = {
     logoColor: '#c2410c',
     label: 'Hindu Dharmam TV',
     logo: 'https://dtil.tmsimg.com/assets/s143131_ld_h15_aa.png?lock=720x540',
-    officialWebsite: 'https://www.yupptv.com/channels/hindu-dharmam/live',
+    officialWebsite: 'https://www.youtube.com/watch?v=bj3m27J9bxI',
   },
   'hindhudharmam tv': {
     category: 'Devotional',
@@ -377,7 +379,7 @@ const CHANNEL_METADATA: Record<string, ChannelMetaInfo> = {
     logoColor: '#c2410c',
     label: 'Hindu Dharmam TV',
     logo: 'https://dtil.tmsimg.com/assets/s143131_ld_h15_aa.png?lock=720x540',
-    officialWebsite: 'https://www.yupptv.com/channels/hindu-dharmam/live',
+    officialWebsite: 'https://www.youtube.com/watch?v=bj3m27J9bxI',
   },
   'hindhudharmam': {
     category: 'Devotional',
@@ -385,7 +387,7 @@ const CHANNEL_METADATA: Record<string, ChannelMetaInfo> = {
     logoColor: '#c2410c',
     label: 'Hindu Dharmam TV',
     logo: 'https://dtil.tmsimg.com/assets/s143131_ld_h15_aa.png?lock=720x540',
-    officialWebsite: 'https://www.yupptv.com/channels/hindu-dharmam/live',
+    officialWebsite: 'https://www.youtube.com/watch?v=bj3m27J9bxI',
   },
   'hindhu dharmam': {
     category: 'Devotional',
@@ -393,7 +395,7 @@ const CHANNEL_METADATA: Record<string, ChannelMetaInfo> = {
     logoColor: '#c2410c',
     label: 'Hindu Dharmam TV',
     logo: 'https://dtil.tmsimg.com/assets/s143131_ld_h15_aa.png?lock=720x540',
-    officialWebsite: 'https://www.yupptv.com/channels/hindu-dharmam/live',
+    officialWebsite: 'https://www.youtube.com/watch?v=bj3m27J9bxI',
   },
   'hindhu dharmam tv': {
     category: 'Devotional',
@@ -401,7 +403,7 @@ const CHANNEL_METADATA: Record<string, ChannelMetaInfo> = {
     logoColor: '#c2410c',
     label: 'Hindu Dharmam TV',
     logo: 'https://dtil.tmsimg.com/assets/s143131_ld_h15_aa.png?lock=720x540',
-    officialWebsite: 'https://www.yupptv.com/channels/hindu-dharmam/live',
+    officialWebsite: 'https://www.youtube.com/watch?v=bj3m27J9bxI',
   },
   'hindhu darmam': {
     category: 'Devotional',
@@ -409,7 +411,7 @@ const CHANNEL_METADATA: Record<string, ChannelMetaInfo> = {
     logoColor: '#c2410c',
     label: 'Hindu Dharmam TV',
     logo: 'https://dtil.tmsimg.com/assets/s143131_ld_h15_aa.png?lock=720x540',
-    officialWebsite: 'https://www.yupptv.com/channels/hindu-dharmam/live',
+    officialWebsite: 'https://www.youtube.com/watch?v=bj3m27J9bxI',
   },
   'svvbc': {
     category: 'Devotional',
@@ -466,6 +468,7 @@ const CHANNEL_METADATA: Record<string, ChannelMetaInfo> = {
     logoColor: '#0369a1',
     label: 'TANA TV',
     logo: 'https://yt3.ggpht.com/Ui9aoaJTFUeF9ADB6PCcg-mwbtKYR68dBu04NECAB0TLLpUm0JN4DrCB6omXt4e8eSXmbl2nog=s500-c-k-c0x00ffffff-no-rj',
+    directYoutubeUrl: 'https://www.youtube.com/watch?v=EEVACQQms3M',
   },
   'tolly tv': {
     category: 'Cable TV',
@@ -489,6 +492,15 @@ const CHANNEL_METADATA: Record<string, ChannelMetaInfo> = {
     logoColor: '#0891b2',
     label: 'iNews',
     logo: 'https://jiotvimages.cdn.jio.com/dare_images/images/I_News.png',
+    directHlsUrl: 'https://mumt03.tangotv.in/Dsly5z3HINEWS/index.m3u8',
+  },
+  'inews': {
+    category: 'News',
+    epg: 'iNews Live Andhra & Telangana',
+    logoColor: '#0891b2',
+    label: 'iNews',
+    logo: 'https://jiotvimages.cdn.jio.com/dare_images/images/I_News.png',
+    directHlsUrl: 'https://mumt03.tangotv.in/Dsly5z3HINEWS/index.m3u8',
   },
   'nipuna': {
     category: 'Education',
@@ -503,6 +515,15 @@ const CHANNEL_METADATA: Record<string, ChannelMetaInfo> = {
     logoColor: '#6366f1',
     label: 'Studio One Plus',
     logo: 'https://i.imgur.com/yOPB7JB.png',
+    directHlsUrl: 'https://mumt04.tangotv.in/m18aqlK4STUDIOONEPLUS/index.m3u8',
+  },
+  'studio one plus': {
+    category: 'Entertainment',
+    epg: 'Studio One Plus Blockbusters',
+    logoColor: '#6366f1',
+    label: 'Studio One Plus',
+    logo: 'https://i.imgur.com/yOPB7JB.png',
+    directHlsUrl: 'https://mumt04.tangotv.in/m18aqlK4STUDIOONEPLUS/index.m3u8',
   },
   'pmc tv': {
     category: 'Devotional',
@@ -510,6 +531,15 @@ const CHANNEL_METADATA: Record<string, ChannelMetaInfo> = {
     logoColor: '#059669',
     label: 'PMC Telugu',
     logo: 'https://jiotvimages.cdn.jio.com/dare_images/images/PMC_Telugu.png',
+    directHlsUrl: 'https://mumbai-edge.smartplaytv.in/PMC/index.m3u8',
+  },
+  'pmc': {
+    category: 'Devotional',
+    epg: 'Pyramid Meditation Channel Live',
+    logoColor: '#059669',
+    label: 'PMC Telugu',
+    logo: 'https://jiotvimages.cdn.jio.com/dare_images/images/PMC_Telugu.png',
+    directHlsUrl: 'https://mumbai-edge.smartplaytv.in/PMC/index.m3u8',
   },
   'yupp veda': {
     category: 'Devotional',
@@ -517,6 +547,23 @@ const CHANNEL_METADATA: Record<string, ChannelMetaInfo> = {
     logoColor: '#b45309',
     label: 'Yupp Veda',
     logo: 'https://yt3.googleusercontent.com/ytc/AIdro_kXlQCvul5XVRV4i_WQkqvECjObH3nF9yYpWtSMG22XwQ=s500-c-k-c0x00ffffff-no-rj',
+    officialWebsite: 'https://www.yupptv.com/channels/yupptv-veda/live',
+  },
+  'yupptv veda': {
+    category: 'Devotional',
+    epg: 'YuppTV Veda Mantra Chants',
+    logoColor: '#b45309',
+    label: 'Yupp Veda',
+    logo: 'https://yt3.googleusercontent.com/ytc/AIdro_kXlQCvul5XVRV4i_WQkqvECjObH3nF9yYpWtSMG22XwQ=s500-c-k-c0x00ffffff-no-rj',
+    officialWebsite: 'https://www.yupptv.com/channels/yupptv-veda/live',
+  },
+  'yuppbaveda': {
+    category: 'Devotional',
+    epg: 'YuppTV Veda Mantra Chants',
+    logoColor: '#b45309',
+    label: 'Yupp Veda',
+    logo: 'https://yt3.googleusercontent.com/ytc/AIdro_kXlQCvul5XVRV4i_WQkqvECjObH3nF9yYpWtSMG22XwQ=s500-c-k-c0x00ffffff-no-rj',
+    officialWebsite: 'https://www.yupptv.com/channels/yupptv-veda/live',
   },
   '99tv': {
     category: 'News',
@@ -524,6 +571,7 @@ const CHANNEL_METADATA: Record<string, ChannelMetaInfo> = {
     logoColor: '#dc2626',
     label: '99TV Telugu',
     logo: 'https://i.imgur.com/dZA4gel.png',
+    directYoutubeUrl: 'https://www.youtube.com/watch?v=4AzR_uMuZfw',
   },
   'vidya tv': {
     category: 'Education',
@@ -598,7 +646,8 @@ const CHANNEL_METADATA: Record<string, ChannelMetaInfo> = {
     logoColor: '#b91c1c',
     label: 'HMTV News',
     logo: 'https://dtil.tmsimg.com/assets/s143136_ld_h15_aa.png?lock=720x540',
-    officialWebsite: 'https://www.yupptv.com/channels/hmtv/live',
+    directHlsUrl: 'https://mumbai-edge.smartplaytv.in/HMTV/index.m3u8',
+    officialWebsite: 'https://www.hmtvlive.com/',
   },
   't news': {
     category: 'News',
@@ -606,7 +655,17 @@ const CHANNEL_METADATA: Record<string, ChannelMetaInfo> = {
     logoColor: '#e11d48',
     label: 'T News Telugu',
     logo: 'https://dtil.tmsimg.com/assets/s143919_ld_h15_aa.png?lock=720x540',
-    officialWebsite: 'https://www.yupptv.com/channels/t-news/live',
+    directHlsUrl: 'https://mumbai-edge.smartplaytv.in/TNews/index.m3u8',
+    officialWebsite: 'https://tnewstelugu.com/',
+  },
+  'tnews': {
+    category: 'News',
+    epg: 'T News Telangana Round-Up & Headlines',
+    logoColor: '#e11d48',
+    label: 'T News Telugu',
+    logo: 'https://dtil.tmsimg.com/assets/s143919_ld_h15_aa.png?lock=720x540',
+    directHlsUrl: 'https://mumbai-edge.smartplaytv.in/TNews/index.m3u8',
+    officialWebsite: 'https://tnewstelugu.com/',
   },
   'suman tv': {
     category: 'Entertainment',
@@ -704,7 +763,7 @@ const CHANNEL_METADATA: Record<string, ChannelMetaInfo> = {
     logoColor: '#dc2626',
     label: 'Mahaa News',
     logo: 'https://i.imgur.com/buT76vR.png',
-    officialWebsite: 'https://www.yupptv.com/channels/mahaa-news/live',
+    officialWebsite: 'https://mahaanews.tv/',
     directHlsUrl: 'https://mumt07.tangotv.in/zHjX9OFlMAHAANEWS/index.m3u8',
   },
   'mahaa max': {
@@ -729,7 +788,7 @@ const CHANNEL_METADATA: Record<string, ChannelMetaInfo> = {
     logoColor: '#0891b2',
     label: 'Express TV',
     logo: 'https://yt3.googleusercontent.com/61wESjytxYFafnKZU-RGdT2u7ETOjF5quYaIOIDhIhGHaitj5xcAo31LHKsMXkOlNNcMnKUm6uY=s500-c-k-c0x00ffffff-no-rj',
-    officialWebsite: 'https://www.yupptv.com/channels/express-tv/live',
+    directYoutubeUrl: 'https://www.youtube.com/watch?v=yVn-GtS2gqQ',
   },
 
   // --- EDUCATION CHANNELS (AP GOVT, TELANGANA GOVT & INSTITUTIONS) ---
@@ -866,7 +925,7 @@ const CHANNEL_METADATA: Record<string, ChannelMetaInfo> = {
     logoColor: '#d97706',
     label: 'Vissa TV',
     logo: 'https://jiotvimages.cdn.jio.com/dare_images/images/Vissa_TV.png',
-    officialWebsite: 'https://www.yupptv.com/channels/vissa-tv/live',
+    officialWebsite: 'https://mumt07.tangotv.in/zHjX9OFlVISSATV/index.m3u8',
   },
   'vissa tv': {
     category: 'Cable TV',
@@ -874,7 +933,7 @@ const CHANNEL_METADATA: Record<string, ChannelMetaInfo> = {
     logoColor: '#d97706',
     label: 'Vissa TV',
     logo: 'https://jiotvimages.cdn.jio.com/dare_images/images/Vissa_TV.png',
-    officialWebsite: 'https://www.yupptv.com/channels/vissa-tv/live',
+    officialWebsite: 'https://mumt07.tangotv.in/zHjX9OFlVISSATV/index.m3u8',
   },
   'vissa': {
     category: 'Cable TV',
@@ -882,7 +941,7 @@ const CHANNEL_METADATA: Record<string, ChannelMetaInfo> = {
     logoColor: '#d97706',
     label: 'Vissa TV',
     logo: 'https://jiotvimages.cdn.jio.com/dare_images/images/Vissa_TV.png',
-    officialWebsite: 'https://www.yupptv.com/channels/vissa-tv/live',
+    officialWebsite: 'https://mumt07.tangotv.in/zHjX9OFlVISSATV/index.m3u8',
   },
 
   // --- HARE KRSNA TV ---
@@ -977,7 +1036,7 @@ const CHANNEL_METADATA: Record<string, ChannelMetaInfo> = {
     logoColor: '#b91c1c',
     label: 'AP Prime TV',
     logo: 'https://yt3.googleusercontent.com/61wESjytxYFafnKZU-RGdT2u7ETOjF5quYaIOIDhIhGHaitj5xcAo31LHKsMXkOlNNcMnKUm6uY=s500-c-k-c0x00ffffff-no-rj',
-    officialWebsite: 'https://www.yupptv.com/channels/ap-prime-tv/live',
+    officialWebsite: 'https://apprimetv.com/',
     directHlsUrl: 'https://mumt01.tangotv.in/O5aw8Zn3APPRIME/index.m3u8',
   },
   'ap prime': {
@@ -986,7 +1045,7 @@ const CHANNEL_METADATA: Record<string, ChannelMetaInfo> = {
     logoColor: '#b91c1c',
     label: 'AP Prime TV',
     logo: 'https://yt3.googleusercontent.com/61wESjytxYFafnKZU-RGdT2u7ETOjF5quYaIOIDhIhGHaitj5xcAo31LHKsMXkOlNNcMnKUm6uY=s500-c-k-c0x00ffffff-no-rj',
-    officialWebsite: 'https://www.yupptv.com/channels/ap-prime-tv/live',
+    officialWebsite: 'https://apprimetv.com/',
     directHlsUrl: 'https://mumt01.tangotv.in/O5aw8Zn3APPRIME/index.m3u8',
   },
 
@@ -1080,6 +1139,46 @@ const CHANNEL_METADATA: Record<string, ChannelMetaInfo> = {
     label: 'Classic Movies',
     logo: 'https://yt3.googleusercontent.com/ytc/AIdro_nVnQIDi1gMc-4cunb63p1PAl_zfozOWocAva8Ov56NYHw=s500-c-k-c0x00ffffff-no-rj',
     directYoutubeUrl: 'https://www.youtube.com/watch?v=132Xv_w_0Zg',
+  },
+
+  // --- GEMINI MUSIC (SUN TV NETWORK TELUGU MUSIC) ---
+  'gemini music': {
+    category: 'Music',
+    epg: 'Gemini Music 24x7 Non-Stop Tollywood Hits, Super Hit Mornings & Live Countdown',
+    logoColor: '#ea580c',
+    label: 'Gemini Music',
+    logo: 'https://jiotvimages.cdn.jio.com/dare_images/images/Gemini_Music.png',
+    officialWebsite: 'https://www.sunnetwork.in/gemini-music',
+    directYoutubeUrl: 'https://www.youtube.com/live/s4zM_iSE6J0',
+  },
+  'geminimusic': {
+    category: 'Music',
+    epg: 'Gemini Music 24x7 Non-Stop Tollywood Hits, Super Hit Mornings & Live Countdown',
+    logoColor: '#ea580c',
+    label: 'Gemini Music',
+    logo: 'https://jiotvimages.cdn.jio.com/dare_images/images/Gemini_Music.png',
+    officialWebsite: 'https://www.sunnetwork.in/gemini-music',
+    directYoutubeUrl: 'https://www.youtube.com/live/s4zM_iSE6J0',
+  },
+
+  // --- SUN MUSIC (SUN TV NETWORK 24X7 MUSIC) ---
+  'sun music': {
+    category: 'Music',
+    epg: 'Sun Music 24x7 Non-Stop South Hits, Super Hits & Live Request Jukebox',
+    logoColor: '#0284c7',
+    label: 'Sun Music',
+    logo: 'https://jiotvimages.cdn.jio.com/dare_images/images/Sun_Music.png',
+    officialWebsite: 'https://www.sunnetwork.in/sun-music',
+    directYoutubeUrl: 'https://www.youtube.com/watch?v=5rG4n6yWj4g',
+  },
+  'sunmusic': {
+    category: 'Music',
+    epg: 'Sun Music 24x7 Non-Stop South Hits, Super Hits & Live Request Jukebox',
+    logoColor: '#0284c7',
+    label: 'Sun Music',
+    logo: 'https://jiotvimages.cdn.jio.com/dare_images/images/Sun_Music.png',
+    officialWebsite: 'https://www.sunnetwork.in/sun-music',
+    directYoutubeUrl: 'https://www.youtube.com/watch?v=5rG4n6yWj4g',
   },
 };
 
@@ -1223,7 +1322,7 @@ export function parseNotepadToChannels(rawText: string): Channel[] {
       logo: channelLogo,
       logoColor: meta?.logoColor || '#ea580c',
       quality: channelNumber % 3 === 0 ? '4K' : (channelNumber % 2 === 0 ? 'FHD' : 'HD'),
-      isFavorite: ['tv9', 'ntv', 'bakthi', 'v6', 'tv5', 'sakshi', 'abn', 'aditya music', 'etv'].some(k => lookupKey.includes(k)),
+      isFavorite: ['tv9', 'ntv', 'bakthi', 'v6', 'tv5', 'sakshi', 'abn', 'aditya music', 'gemini music', 'sun music', 'etv'].some(k => lookupKey.includes(k)),
       language: 'Telugu',
       epgCurrent: meta?.epg || `${cleanTitle} Live HD Broadcast`,
       epgNext: `${cleanTitle} Telugu Samacharam & Highlights`,
@@ -1276,21 +1375,93 @@ export function getChannelLogo(channelName: string, color?: string): string {
  */
 export function refreshChannelLogos(channels: Channel[]): Channel[] {
   return channels.map(ch => {
-    const meta = findFuzzyMetadata(ch.name) || findFuzzyMetadata(ch.originalUrl);
+    let updated = { ...ch };
+    const nameLower = (ch.name || '').toLowerCase();
+    const streamUrl = ch.streamUrl || '';
+    const isYuppVeda = nameLower.includes('veda') || nameLower.includes('baveda') || streamUrl.includes('yupptv-veda');
+
+    // Automatically migrate legacy YuppTV links to verified direct TV broadcast links (excluding Yupp Veda)
+    if (!isYuppVeda) {
+      if (nameLower.includes('vissa') && (streamUrl.includes('yupptv') || !streamUrl.includes('tangotv'))) {
+        updated = {
+          ...updated,
+          streamUrl: 'https://mumt07.tangotv.in/zHjX9OFlVISSATV/index.m3u8',
+          originalUrl: 'https://mumt07.tangotv.in/zHjX9OFlVISSATV/index.m3u8',
+          streamType: 'hls',
+        };
+      } else if (nameLower.includes('99tv') && streamUrl.includes('yupptv')) {
+        updated = {
+          ...updated,
+          streamUrl: 'https://www.youtube.com/watch?v=4AzR_uMuZfw',
+          originalUrl: 'https://www.youtube.com/watch?v=4AzR_uMuZfw',
+          streamType: 'youtube',
+        };
+      } else if (nameLower.includes('hmtv') && streamUrl.includes('yupptv')) {
+        updated = {
+          ...updated,
+          streamUrl: 'https://mumbai-edge.smartplaytv.in/HMTV/index.m3u8',
+          originalUrl: 'https://mumbai-edge.smartplaytv.in/HMTV/index.m3u8',
+          streamType: 'hls',
+        };
+      } else if ((nameLower.includes('t news') || nameLower === 'tnews') && streamUrl.includes('yupptv')) {
+        updated = {
+          ...updated,
+          streamUrl: 'https://mumbai-edge.smartplaytv.in/TNews/index.m3u8',
+          originalUrl: 'https://mumbai-edge.smartplaytv.in/TNews/index.m3u8',
+          streamType: 'hls',
+        };
+      } else if ((nameLower.includes('inews') || nameLower.includes('i_news') || nameLower.includes('i news')) && streamUrl.includes('yupptv')) {
+        updated = {
+          ...updated,
+          streamUrl: 'https://mumt03.tangotv.in/Dsly5z3HINEWS/index.m3u8',
+          originalUrl: 'https://mumt03.tangotv.in/Dsly5z3HINEWS/index.m3u8',
+          streamType: 'hls',
+        };
+      } else if (nameLower.includes('express tv') && streamUrl.includes('yupptv')) {
+        updated = {
+          ...updated,
+          streamUrl: 'https://www.youtube.com/watch?v=yVn-GtS2gqQ',
+          originalUrl: 'https://www.youtube.com/watch?v=yVn-GtS2gqQ',
+          streamType: 'youtube',
+        };
+      } else if (nameLower.includes('pmc') && streamUrl.includes('yupptv')) {
+        updated = {
+          ...updated,
+          streamUrl: 'https://mumbai-edge.smartplaytv.in/PMC/index.m3u8',
+          originalUrl: 'https://mumbai-edge.smartplaytv.in/PMC/index.m3u8',
+          streamType: 'hls',
+        };
+      } else if (nameLower.includes('studio one') && streamUrl.includes('yupptv')) {
+        updated = {
+          ...updated,
+          streamUrl: 'https://mumt04.tangotv.in/m18aqlK4STUDIOONEPLUS/index.m3u8',
+          originalUrl: 'https://mumt04.tangotv.in/m18aqlK4STUDIOONEPLUS/index.m3u8',
+          streamType: 'hls',
+        };
+      } else if (nameLower.includes('tana') && streamUrl.includes('yupptv')) {
+        updated = {
+          ...updated,
+          streamUrl: 'https://www.youtube.com/watch?v=EEVACQQms3M',
+          originalUrl: 'https://www.youtube.com/watch?v=EEVACQQms3M',
+          streamType: 'youtube',
+        };
+      }
+    }
+    const meta = findFuzzyMetadata(updated.name) || findFuzzyMetadata(updated.originalUrl);
     if (meta?.logo) {
       return {
-        ...ch,
+        ...updated,
         logo: meta.logo,
       };
     }
     // If channel logo is empty or generic, provide fallback
-    if (!ch.logo) {
+    if (!updated.logo) {
       return {
-        ...ch,
-        logo: generateLogoUrl(ch.name, '#ea580c'),
+        ...updated,
+        logo: generateLogoUrl(updated.name, '#ea580c'),
       };
     }
-    return ch;
+    return updated;
   });
 }
 

@@ -11,7 +11,6 @@ import {
   Star,
   Tv,
   Radio,
-  ExternalLink,
   RotateCcw,
   Sparkles,
   Layers,
@@ -19,7 +18,6 @@ import {
   Moon,
   Volume1,
   Minimize2,
-  Search,
   Check,
   Zap,
   Sliders,
@@ -68,16 +66,13 @@ export const TVPlayer: React.FC<TVPlayerProps> = ({
   const [aspectRatio, setAspectRatio] = useState<'16:9' | 'fill' | '4:3'>('16:9');
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [streamError, setStreamError] = useState(false);
+  const [reloadKey, setReloadKey] = useState(0);
   const [ambilightEnabled, setAmbilightEnabled] = useState(true);
 
   // Sleep Timer State
   const [sleepTimerMinutes, setSleepTimerMinutes] = useState<number | null>(null);
   const [sleepTimeRemaining, setSleepTimeRemaining] = useState<number | null>(null);
   const [showSleepMenu, setShowSleepMenu] = useState(false);
-
-  // In-Player Channel Surfer Category & Search filter
-  const [surferCategory, setSurferCategory] = useState<string>('All');
-  const [surferSearch, setSurferSearch] = useState<string>('');
   const [youtubePrivacyMode, setYoutubePrivacyMode] = useState(false);
 
   const containerRef = useRef<HTMLDivElement>(null);
@@ -169,7 +164,7 @@ export const TVPlayer: React.FC<TVPlayerProps> = ({
         hlsRef.current = null;
       }
     };
-  }, [videoUrl, isHlsStream]);
+  }, [videoUrl, isHlsStream, reloadKey]);
 
   const toggleFullscreen = () => {
     soundEffects.playNavTick();
@@ -242,7 +237,7 @@ export const TVPlayer: React.FC<TVPlayerProps> = ({
     return `https://www.youtube.com/watch?v=${ytVideoId}`;
   }, [ytVideoId]);
 
-  // Pop-out clean cinema window (convenient for Brave Shields, Firefox Strict ETP)
+  // Pop-out clean cinema window if popout requested
   const openPopoutPlayer = () => {
     if (ytWatchUrl) {
       soundEffects.playSelectChime();
@@ -251,10 +246,6 @@ export const TVPlayer: React.FC<TVPlayerProps> = ({
         'tv_popout_player',
         'width=1080,height=620,menubar=no,toolbar=no,location=no,status=no,resizable=yes'
       );
-      if (popout) popout.opener = null;
-    } else if (isChannel && (channel?.officialWebsite || channel?.livePortalUrl || channel?.originalUrl)) {
-      soundEffects.playSelectChime();
-      const popout = window.open(channel.officialWebsite || channel.livePortalUrl || channel.originalUrl, '_blank');
       if (popout) popout.opener = null;
     }
   };
@@ -286,16 +277,6 @@ export const TVPlayer: React.FC<TVPlayerProps> = ({
 
   const brandColor = channel?.logoColor || '#ea580c';
 
-  // Filter channels for the bottom quick surfer strip
-  const surferFilteredChannels = channels.filter((ch) => {
-    if (surferCategory !== 'All' && ch.category !== surferCategory) return false;
-    if (surferSearch.trim()) {
-      const q = surferSearch.toLowerCase();
-      return ch.name.toLowerCase().includes(q) || String(ch.number).includes(q);
-    }
-    return true;
-  });
-
   return (
     <div
       ref={containerRef}
@@ -316,6 +297,7 @@ export const TVPlayer: React.FC<TVPlayerProps> = ({
       <div className="relative w-full h-full flex items-center justify-center bg-neutral-950">
         {isHlsStream ? (
           <video
+            key={`hls-video-${reloadKey}`}
             ref={videoRef}
             className={`transition-all duration-300 ${getAspectClass()}`}
             autoPlay
@@ -326,7 +308,7 @@ export const TVPlayer: React.FC<TVPlayerProps> = ({
         ) : embedSource ? (
           <div className="w-full h-full flex items-center justify-center">
             <iframe
-              key={embedSource}
+              key={`${embedSource}-${reloadKey}`}
               src={embedSource}
               title={item.title || (item as Channel).name}
               className={`w-full h-full border-none transition-all duration-300 ${
@@ -355,54 +337,41 @@ export const TVPlayer: React.FC<TVPlayerProps> = ({
             <h4 className="text-lg font-bold text-white">Stream Signal Re-syncing</h4>
             <p className="text-xs text-neutral-400 max-w-md my-2">
               {ytVideoId
-                ? 'If YouTube playback is restricted inside the browser frame (e.g. Brave Shields, Firefox Strict Protection), you can open it directly or pop it out with zero friction.'
-                : 'The live broadcast server is establishing link. You can open the official live portal or switch channel.'}
+                ? 'Signal re-synchronizing inside the app player. Use in-app retry or switch stream engine.'
+                : 'The live broadcast server is establishing link. Retrying stream or switch channel.'}
             </p>
             <div className="flex items-center gap-3 mt-4 flex-wrap justify-center">
-              {ytWatchUrl && (
-                <a
-                  href={ytWatchUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-red-600 hover:bg-red-500 text-white text-xs font-bold shadow-lg transition-transform hover:scale-105"
-                >
-                  <Play className="w-3.5 h-3.5 fill-current" />
-                  Watch Free on YouTube
-                  <ExternalLink className="w-3.5 h-3.5" />
-                </a>
-              )}
-              {ytWatchUrl && (
-                <button
-                  onClick={openPopoutPlayer}
-                  className="px-4 py-2 rounded-xl bg-neutral-800 hover:bg-neutral-700 text-white text-xs font-bold flex items-center gap-1.5"
-                >
-                  <ExternalLink className="w-3.5 h-3.5" />
-                  Pop-out Window
-                </button>
-              )}
+              <button
+                onClick={() => {
+                  soundEffects.playSelectChime();
+                  setStreamError(false);
+                  setReloadKey(k => k + 1);
+                  if (videoRef.current) {
+                    videoRef.current.load();
+                  }
+                }}
+                className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-orange-500 hover:bg-orange-400 text-black text-xs font-bold shadow-lg transition-transform hover:scale-105"
+              >
+                <RotateCcw className="w-3.5 h-3.5" />
+                <span>Retry In-App Stream</span>
+              </button>
               {ytVideoId && (
                 <button
-                  onClick={() => setYoutubePrivacyMode(!youtubePrivacyMode)}
-                  className="px-3 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-white text-xs font-medium"
+                  onClick={() => {
+                    soundEffects.playNavTick();
+                    setYoutubePrivacyMode(!youtubePrivacyMode);
+                    setStreamError(false);
+                    setReloadKey(k => k + 1);
+                  }}
+                  className="px-3 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-white text-xs font-medium transition-colors"
                 >
                   Switch to {youtubePrivacyMode ? 'Standard (youtube.com)' : 'Privacy (nocookie)'}
                 </button>
               )}
-              {(channel?.officialWebsite || channel?.livePortalUrl || channel?.originalUrl) && !ytWatchUrl && (
-                <a
-                  href={channel.officialWebsite || channel.livePortalUrl || channel.originalUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-orange-500 text-black text-xs font-bold shadow-lg"
-                >
-                  <ExternalLink className="w-3.5 h-3.5" />
-                  Open Live TV Portal
-                </a>
-              )}
               {onNextChannel && (
                 <button
                   onClick={onNextChannel}
-                  className="px-4 py-2 rounded-xl bg-neutral-800 hover:bg-neutral-700 text-white text-xs font-bold"
+                  className="px-4 py-2 rounded-xl bg-neutral-800 hover:bg-neutral-700 text-white text-xs font-bold transition-colors"
                 >
                   Next Channel
                 </button>
@@ -479,30 +448,9 @@ export const TVPlayer: React.FC<TVPlayerProps> = ({
 
           {/* Quick Settings: Sleep Timer, Aspect, Ambient Glow, PiP, Favorites */}
           <div className="flex items-center gap-1.5 sm:gap-2 relative flex-wrap justify-end">
-            {/* YouTube Direct Controls (Works on all browsers: Firefox, Edge, Brave, Chrome) */}
+            {/* In-App Stream Engine Controls */}
             {ytVideoId && (
-              <div className="flex items-center gap-1 bg-neutral-900/90 border border-red-500/40 rounded-lg p-1 shadow-md">
-                <a
-                  id="yt-direct-open-btn"
-                  href={ytWatchUrl!}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => soundEffects.playSelectChime()}
-                  className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-md bg-red-600 hover:bg-red-500 text-white text-xs font-bold transition-all shadow"
-                  title="Open Free Live Stream Directly on YouTube (Works on all browsers: Firefox, Edge, Brave, Chrome)"
-                >
-                  <Play className="w-3 h-3 fill-current" />
-                  <span className="hidden sm:inline">Open YouTube</span>
-                  <ExternalLink className="w-3 h-3" />
-                </a>
-                <button
-                  id="yt-popout-btn"
-                  onClick={openPopoutPlayer}
-                  className="px-2 py-1.5 rounded-md bg-white/5 hover:bg-white/15 text-white/90 text-xs font-medium transition-all"
-                  title="Open Cinema Pop-out Window (Clean player for Brave, Firefox, Edge)"
-                >
-                  Pop-out
-                </button>
+              <div className="flex items-center gap-1 bg-neutral-900/90 border border-white/10 rounded-lg p-1 shadow-md">
                 <button
                   id="yt-mode-toggle-btn"
                   onClick={() => {
@@ -521,6 +469,19 @@ export const TVPlayer: React.FC<TVPlayerProps> = ({
                   }
                 >
                   {youtubePrivacyMode ? 'Privacy' : 'Standard'}
+                </button>
+                <button
+                  id="stream-reload-btn"
+                  onClick={() => {
+                    soundEffects.playSelectChime();
+                    setStreamError(false);
+                    setReloadKey(k => k + 1);
+                  }}
+                  className="px-2 py-1.5 rounded-md bg-white/5 hover:bg-white/15 text-white/90 text-xs font-medium transition-all flex items-center gap-1"
+                  title="Reload In-App Stream"
+                >
+                  <RotateCcw className="w-3 h-3" />
+                  <span className="hidden sm:inline">Reload</span>
                 </button>
               </div>
             )}
@@ -581,21 +542,6 @@ export const TVPlayer: React.FC<TVPlayerProps> = ({
                 </div>
               )}
             </div>
-
-            {/* Official Web Portal button */}
-            {isChannel && channel && (channel.officialWebsite || channel.livePortalUrl) && (
-              <a
-                id="player-official-web-btn"
-                href={channel.officialWebsite || channel.livePortalUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hidden sm:flex items-center gap-1.5 px-3 py-2 rounded-md bg-[#121212] hover:bg-white/10 text-white border border-white/10 text-xs font-semibold transition-all hover:border-orange-500/50"
-                title="Open Official Live Web Portal"
-              >
-                <ExternalLink className="w-3.5 h-3.5 text-orange-400" />
-                <span>Live TV</span>
-              </a>
-            )}
 
             {/* Cinema Ambient Glow Toggle */}
             <button
@@ -668,85 +614,28 @@ export const TVPlayer: React.FC<TVPlayerProps> = ({
 
         {/* Bottom OSD Bar: Quick Channel Surfer & Playback Controls */}
         <div className="space-y-3 pointer-events-auto">
-          {/* YouTube Cross-Browser notice when YouTube stream is active */}
+          {/* In-App Live Stream notice when YouTube stream is active */}
           {ytVideoId && (
             <div className="flex items-center justify-between gap-2 px-3.5 py-2 rounded-xl bg-neutral-900/90 border border-white/10 text-xs text-white/80 backdrop-blur-md shadow-lg flex-wrap sm:flex-nowrap">
               <div className="flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse shrink-0" />
                 <span className="text-[11px] sm:text-xs">
-                  Free YouTube Broadcast active. Supported on <strong>Firefox</strong>, <strong>Edge</strong>, <strong>Brave</strong>, and <strong>Chrome</strong>. If playback is blocked by browser shields, click <strong>Open YouTube</strong> or <strong>Pop-out</strong>.
+                  In-App Live Stream Active. Full HD stream playing directly inside the application.
                 </span>
               </div>
               <div className="flex items-center gap-2 shrink-0">
-                <a
-                  href={ytWatchUrl!}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-2.5 py-1 rounded bg-red-600/90 hover:bg-red-600 text-white font-bold text-[11px] flex items-center gap-1 transition-colors"
+                <button
+                  onClick={() => {
+                    soundEffects.playSelectChime();
+                    setStreamError(false);
+                    setReloadKey(k => k + 1);
+                  }}
+                  className="px-2.5 py-1 rounded bg-white/10 hover:bg-white/20 text-white font-medium text-[11px] flex items-center gap-1 transition-colors"
+                  title="Refresh In-App Feed"
                 >
-                  <span>Open Tab</span>
-                  <ExternalLink className="w-3 h-3" />
-                </a>
-              </div>
-            </div>
-          )}
-
-          {/* Quick Channel Surfer Strip */}
-          {isChannel && channels.length > 0 && (
-            <div className="bg-[#080808]/90 border border-white/10 backdrop-blur-md rounded-xl p-3 space-y-2">
-              <div className="flex items-center justify-between gap-3 text-[11px] font-mono">
-                <div className="flex items-center gap-2 overflow-x-auto scrollbar-none py-0.5">
-                  <span className="font-semibold text-white/80 shrink-0">Quick Channel Surfer:</span>
-                  {['All', 'News', 'Cable TV', 'Education', 'Devotional', 'Entertainment', 'Music', 'Movies'].map((cat) => (
-                    <button
-                      key={cat}
-                      onClick={() => setSurferCategory(cat)}
-                      className={`px-2 py-0.5 rounded text-[10px] font-semibold transition-all shrink-0 ${
-                        surferCategory === cat
-                          ? 'bg-orange-500 text-black font-bold'
-                          : 'bg-white/5 text-white/60 hover:text-white'
-                      }`}
-                    >
-                      {cat}
-                    </button>
-                  ))}
-                </div>
-
-                {/* Quick Filter Search in Player */}
-                <div className="relative hidden md:block w-36">
-                  <Search className="w-3 h-3 absolute left-2 top-1/2 -translate-y-1/2 text-white/40" />
-                  <input
-                    type="text"
-                    value={surferSearch}
-                    onChange={(e) => setSurferSearch(e.target.value)}
-                    placeholder="Filter..."
-                    className="w-full bg-[#141414] border border-white/10 rounded pl-6 pr-2 py-0.5 text-[11px] text-white focus:outline-none focus:border-orange-500 font-sans"
-                  />
-                </div>
-              </div>
-
-              {/* Horizontal Channel Carousel */}
-              <div className="flex items-center gap-2 overflow-x-auto scrollbar-none py-1">
-                {surferFilteredChannels.map((ch) => {
-                  const isCurrent = ch.id === channel?.id;
-                  return (
-                    <button
-                      key={ch.id}
-                      onClick={() => {
-                        soundEffects.playSelectChime();
-                        onSelectChannel?.(ch);
-                      }}
-                      className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-semibold shrink-0 transition-all ${
-                        isCurrent
-                          ? 'bg-white text-black font-bold scale-105 shadow-md ring-2 ring-orange-500'
-                          : 'bg-[#141414] text-[#E0E0E0] hover:bg-white/10 border border-white/5'
-                      }`}
-                    >
-                      <span className="font-mono text-[10px] opacity-75">{String(ch.number).padStart(2, '0')}</span>
-                      <span className="truncate max-w-[120px]">{ch.name}</span>
-                    </button>
-                  );
-                })}
+                  <RotateCcw className="w-3 h-3" />
+                  <span>Refresh Feed</span>
+                </button>
               </div>
             </div>
           )}
