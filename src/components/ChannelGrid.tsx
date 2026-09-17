@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState } from 'react';
 import {
   Play,
   Star,
@@ -30,8 +30,6 @@ interface ChannelGridProps {
   focusedZone: 'categories' | 'channels';
   density?: GridDensity;
   onChangeDensity?: (density: GridDensity) => void;
-  sortBy?: any;
-  onChangeSort?: (sort: any) => void;
 }
 
 const CATEGORIES: ChannelCategory[] = [

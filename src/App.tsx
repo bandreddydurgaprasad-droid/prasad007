@@ -672,8 +672,6 @@ export default function App() {
                 focusedZone="channels"
                 density={gridDensity}
                 onChangeDensity={handleSetGridDensity}
-                sortBy={channelSort}
-                onChangeSort={handleSetChannelSort}
               />
             </div>
           </div>
